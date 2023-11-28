@@ -50,22 +50,22 @@
             <span class="font-bold">Year Released: </span> <%= set.year %>
             <br />
             <span class="font-bold">Theme: </span> <%= set.Theme.name %> <br />
-            <!-- A5 replaced set.theme! -->
+            <!-- note to self: A5 replaced set.theme => set.theme.name!! -->
             <span class="font-bold">Number of Parts: </span> <%= set.num_parts
             %> <br /><br />
 
             <span id="quote"></span>
             <br /><br />
 
-            <!-- EDITT BTN-->
+            <!-- EDITT BTN (a5)-->
             <a
               href="/lego/editSet/<%= set.set_num %>"
-              class="btn btn-success btn-sm"
+              class="btn btn-success btn-md"
               >Edit</a
             >
-
+            <!-- GO BSCK-->
             <a
-              class="btn btn-primary btn-sm"
+              class="btn btn-primary btn-md"
               href="#"
               onclick="history.back(); return false;"
               >RETURN</a

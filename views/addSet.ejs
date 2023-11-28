@@ -18,7 +18,7 @@
           <div class="max-w-md">
             <h1 class="text-5xl font-bold">Add Set</h1>
   
-            <p class="py-6">Use the below form to add a new Lego Set to the collection.</p>
+            <p class="py-6">Add a new Lego Set !!!!!!</p>
   
           </div>
         </div>
@@ -27,29 +27,29 @@
 
       <form action="/lego/addSet" method="POST" class="space-y-4">
         <div class="flex flex-col">
-          <label for="name" class="text-sm font-semibold mb-1">Name:</label>
-          <input type="text" id="name" name="name" required class="input border border-black w-1/2" />
+          <label for="name" class="text-lg font-semibold mb-2">name:</label>
+          <input type="text" id="name_" name="name" required class="input border border-black w-1/2" />
         </div>
 
         <div class="flex flex-col">
-          <label for="year" class="text-sm font-semibold mb-1">Year:</label>
-          <input type="number" id="year" name="year" required class="input border border-black w-1/2" />
+          <label for="year" class="text-lg font-semibold mb-2">year:</label>
+          <input type="number" id="yr_" name="year" required class="input border border-black w-1/2" />
         </div>
 
         <div class="flex flex-col">
-          <label for="num_parts" class="text-sm font-semibold mb-1">Number of Parts:</label>
-          <input type="number" id="num_parts" name="num_parts" required class="input border border-black w-1/2" />
+          <label for="num_parts" class="text-lg font-semibold mb-2">num of parts:</label>
+          <input type="number" id="numParts_" name="num_parts" required class="input border border-black w-1/2" />
         </div>
 
         <div class="flex flex-col">
-          <label for="img_url" class="text-sm font-semibold mb-1">Image URL:</label>
-          <input type="url" id="img_url" name="img_url" required class="input border border-black w-1/2" />
+          <label for="img_url" class="text-lg font-semibold mb-2">image URL:</label>
+          <input type="url" id="imgUrl_" name="img_url" required class="input border border-black w-1/2" />
         </div>
 
         <div class="flex flex-col">
-          <label for="theme_id" class="text-sm font-semibold mb-1">Theme:</label>
-          <select id="theme_id" name="theme_id" required class="select border border-black w-1/2">
-         <!--drodpown-->
+          <label for="theme_id" class="text-lg font-semibold mb-2">theme:</label>
+          <select id="themeId_" name="theme_id" required class="select border border-black w-1/2">
+         <!--//////drodpown for tTHEME SELECTION////////-->
          <% themes.forEach(theme => { %>
           <option value="<%= theme.id %>"><%= theme.name %></option>
         <% }) %>
@@ -58,11 +58,11 @@
         </div>
 
         <div class="flex flex-col">
-          <label for="set_num" class="text-sm font-semibold mb-1">Set Number:</label>
-          <input type="text" id="set_num" name="set_num" required class="input border border-black w-1/2" />
+          <label for="set_num" class="text-lg font-semibold mb-2">set #:</label>
+          <input type="text" id="setNum_" name="set_num" required class="input border border-black w-1/2" />
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">submit</button>
       </form>
   
       <br /></body>

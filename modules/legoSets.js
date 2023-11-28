@@ -1,3 +1,9 @@
+// CESCA DELA CRUZ
+// WEB 322 - NOV 27 2023
+// A5
+//////////////////////////////
+// NOTE: used prof's "CLEAN" VERSION OF A4 to complete A5
+
 //require("dotenv").config(); // A5
 const dotenv = require("dotenv");
 dotenv.config();
@@ -128,7 +134,7 @@ function getSetByNum(setNum) {
     if (elem.length > 0) {
       return elem[0];
     } else {
-      throw new Error("unable to find reqeusted set!!");
+      throw new Error("unbale to find reqeusted set!!");
     }
   });
 }
@@ -160,7 +166,7 @@ function getSetsByTheme(theme) {
     if (elem.length > 0) {
       return elem;
     } else {
-      throw new Error("unable to find reqeusted sets!!");
+      throw new Error("unbale to find reqeusted sets!!");
     }
   });
 }
@@ -172,6 +178,7 @@ function getSetsByTheme(theme) {
 - Once this function has resolved successfully, resolve the Promise returned by the addSet(setData) function without any data.
 - If the function did not resolve successfully, reject the Promise returned by the addSet(setData)function with the message from the first error, ie: err.errors[0].message  */
 function addSet(setData) {
+  //console.log("testing....");
   return Set.create(setData)
     .then(() => {
       return Promise.resolve();
@@ -181,8 +188,9 @@ function addSet(setData) {
     });
 }
 
-/* return a Promise that resolves with all the themes in the database. This can be accomplishedusing the "Theme" model to return all of the themes in the database */
+/* return a Promise that resolves with all the themes in the database. This can be accomplished using the "Theme" model to return all of the themes in the database */
 function getAllThemes() {
+  //console.log("testing....");
   return Theme.findAll()
     .then((themes) => {
       return Promise.resolve(themes);
@@ -194,39 +202,37 @@ function getAllThemes() {
 
 // Adding new functionality to legoSets.js module (editSet).....
 async function editSet(setNum, setData) {
+  //console.log("testing....");
+
   try {
-    const editedSet = await Set.update(setData, {
+    const edited_set = await Set.update(setData, {
       where: { set_num: setNum },
       returning: true,
-      plain: true,
+      plain: true, // == ONLY edited set is returned
     });
 
-    if (!editedSet[1]) {
+    if (!edited_set[1]) {
       throw new Error("set not found!!!");
     }
 
-    return editedSet[1];
+    return edited_set[1];
   } catch (error) {
-    return Promise.reject(
-      error.errors[0].message || "error when updating set!"
-    );
+    return Promise.reject(error.errors[0].message);
   }
 }
 
 // delete functionality
-
-// In legoSets.js
-
 async function deleteSet(setNum) {
+  //console.log("testing....");
   try {
-    const result = await Set.destroy({
+    const res = await Set.destroy({
       where: { set_num: setNum },
     });
 
-    if (result === 1) {
+    if (res === 1) {
       return Promise.resolve();
     } else {
-      throw new Error("Unable to delete set. Set not found.");
+      throw new Error("cannot delete; set not found.");
     }
   } catch (error) {
     return Promise.reject(error.errors[0].message);

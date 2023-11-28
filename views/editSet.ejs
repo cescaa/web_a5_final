@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Set</title>
+    <title>edit set</title>
     <link rel="stylesheet" href="/css/main.css" />
   </head>
 
@@ -21,33 +21,29 @@
       </div>
 
       <form action="/lego/editSet" method="POST" class="space-y-4">
-          <!-- Set Name -->
           <div class="flex flex-col">
-              <label for="name" class="text-sm font-semibold mb-1">Name:</label>
-              <input type="text" id="name" name="name" required value="<%= set.name %>" class="input border border-black w-1/2" />
-          </div>
-
-          <!-- Year -->
-          <div class="flex flex-col">
-              <label for="year" class="text-sm font-semibold mb-1">Year:</label>
-              <input type="number" id="year" name="year" required value="<%= set.year %>" class="input border border-black w-1/2" />
-          </div>
-
-          <!-- Number of Parts -->
-          <div class="flex flex-col">
-              <label for="num_parts" class="text-sm font-semibold mb-1">Number of Parts:</label>
-              <input type="number" id="num_parts" name="num_parts" required value="<%= set.num_parts %>" class="input border border-black w-1/2" />
+              <label for="name" class="text-lg font-semibold mb-2">name:</label>
+              <input type="text" id="name_" name="name" required value="<%= set.name %>" class="input border border-black w-1/2" />
           </div>
 
           <div class="flex flex-col">
-              <label for="img_url" class="text-sm font-semibold mb-1">Image URL:</label>
-              <input type="url" id="img_url" name="img_url" required value="<%= set.img_url %>" class="input border border-black w-1/2" />
+              <label for="year" class="text-lg font-semibold mb-2">year:</label>
+              <input type="number" id="yr_" name="year" required value="<%= set.year %>" class="input border border-black w-1/2" />
           </div>
 
-          <!-- Theme -->
           <div class="flex flex-col">
-              <label for="theme_id" class="text-sm font-semibold mb-1">Theme:</label>
-              <select id="theme_id" name="theme_id" required class="select border border-black w-1/2">
+              <label for="num_parts" class="text-lg font-semibold mb-2">mum of parts:</label>
+              <input type="number" id="numParts_" name="num_parts" required value="<%= set.num_parts %>" class="input border border-black w-1/2" />
+          </div>
+
+          <div class="flex flex-col">
+              <label for="img_url" class="text-lg font-semibold mb-2">image URL:</label>
+              <input type="url" id="imgUrl_" name="img_url" required value="<%= set.img_url %>" class="input border border-black w-1/2" />
+          </div>
+
+          <div class="flex flex-col">
+              <label for="theme_id" class="text-lg font-semibold mb-2">Theme:</label>
+              <select id="themeId_" name="theme_id" required class="select border border-black w-1/2">
                   <% themes.forEach(theme => { %>
                       <option <%= (set.theme_id == theme.id) ? "selected" : "" %> value="<%= theme.id %>"><%= theme.name %></option>
                   <% }) %>
@@ -55,15 +51,15 @@
           </div>
 
           <div class="flex flex-col">
-              <label for="set_num" class="text-sm font-semibold mb-1">Set Number:</label>
-              <input type="text" id="set_num" name="set_num" readonly value="<%= set.set_num %>" class="input border border-black w-1/2 cursor-not-allowed" />
+              <label for="set_num" class="text-lg font-semibold mb-2">set num:</label>
+              <input type="text" id="setNum_" name="set_num" readonly value="<%= set.set_num %>" class="input border border-black w-1/2 cursor-not-allowed" />
           </div>
 
-          <button type="submit" class="btn btn-primary">Update Set</button>
+          <button type="submit" class="btn btn-primary">update set</button>
           
       </form>
-<!--DELETE LINK-->
-<a href="/lego/deleteSet/<%= set.set_num %>" class="btn btn-error">Delete Set</a>
+<!--DELETE SET LINK~~~~~~-->
+<a href="/lego/deleteSet/<%= set.set_num %>" class="btn btn-error">delete</a>
 
   </div>
   <br /></body>

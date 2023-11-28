@@ -2367,11 +2367,11 @@ html {
   font-size: 0.75rem;
 }
 
-.btn-sm {
-  height: 2rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  min-height: 2rem;
+.btn-md {
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-height: 3rem;
   font-size: 0.875rem;
 }
 
@@ -2381,9 +2381,9 @@ html {
   padding: 0px;
 }
 
-.btn-square:where(.btn-sm) {
-  height: 2rem;
-  width: 2rem;
+.btn-square:where(.btn-md) {
+  height: 3rem;
+  width: 3rem;
   padding: 0px;
 }
 
@@ -2394,9 +2394,9 @@ html {
   padding: 0px;
 }
 
-.btn-circle:where(.btn-sm) {
-  height: 2rem;
-  width: 2rem;
+.btn-circle:where(.btn-md) {
+  height: 3rem;
+  width: 3rem;
   border-radius: 9999px;
   padding: 0px;
 }
@@ -2578,8 +2578,8 @@ html {
   margin-right: auto;
 }
 
-.mb-1 {
-  margin-bottom: 0.25rem;
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mt-2 {
@@ -2746,9 +2746,9 @@ html {
   line-height: 1;
 }
 
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .text-xl {

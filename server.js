@@ -1,10 +1,16 @@
+// CESCA DELA CRUZ
+// WEB 322 - NOV 27 2023
+// A5
+//////////////////////////////
+// NOTE: used prof's "CLEAN" VERSION OF A4 to complete A5
+
 const legoData = require("./modules/legoSets");
 const path = require("path");
 
 const express = require("express");
 const app = express();
 
-app.use(express.urlencoded({ extended: true })); // ADDED in A5
+app.use(express.urlencoded({ extended: true })); // ADDED for A5
 
 const HTTP_PORT = process.env.PORT || 3000;
 
@@ -25,7 +31,7 @@ app.get("/addSet", (req, res) => {
 }); */
 
 /* 
-GET /lego/add
+GET /lego/add ~~~~
 - request to a Promise-based "getAllThemes()" function (to be added later in the legoSets.js module)
 - Once  Promise is resolved, the "addSet" view must be rendered with them, ie:res.render("addSet", { themes: themeData }); */
 app.get("/addSet", async (req, res) => {
@@ -43,6 +49,8 @@ app.get("/addSet", async (req, res) => {
 - Once the Promise has resolved, redirect the user to the "/lego/sets" route.
 - If an error was encountered, instead render the new "500" view with an appropriate message
  */
+
+// add POST ~~~~
 app.post("/lego/addSet", async (req, res) => {
   try {
     const setData = {
@@ -58,17 +66,18 @@ app.post("/lego/addSet", async (req, res) => {
     res.redirect("/lego/sets");
   } catch (error) {
     res.status(500).render("500", {
-      message: `sorry, but we encountered the error: ${error}`,
+      message: `encountered error: ${error}`,
     });
+    console.log("showing lego/addSet......");
   }
 });
 
 //.... routes for EDIT SET.......
-// GET (reminder: removed "/lego" in path)
+// GET ~~~~
 app.get("/lego/editSet/:num", async (req, res) => {
   try {
-    const setNum = req.params.num;
-    const set = await legoData.getSetByNum(setNum);
+    const set_num = req.params.num;
+    const set = await legoData.getSetByNum(set_num);
     const themes = await legoData.getAllThemes();
 
     res.render("editSet", { themes, set });
@@ -78,34 +87,34 @@ app.get("/lego/editSet/:num", async (req, res) => {
   }
 });
 
-// POST
+// POST ~~~~
 app.post("/lego/editSet", async (req, res) => {
   try {
-    const setNum = req.body.set_num;
-    const setData = req.body;
-    await legoData.editSet(setNum, setData);
+    const set_num = req.body.set_num;
+    const setdat = req.body;
+    await legoData.editSet(set_num, setdat);
 
     res.redirect("/lego/sets");
   } catch (error) {
     res.status(500).render("500", {
-      message: `sorry, but we encountered the error: ${error}`,
+      message: `encountered error: ${error}`,
     });
   }
   console.log("showing /lego/editSet....");
 });
 
 // DELETE ROUTEE
-
 app.get("/lego/deleteSet/:num", async (req, res) => {
   try {
-    const setNum = req.params.num;
-    await legoData.deleteSet(setNum);
+    const set_num = req.params.num;
+    await legoData.deleteSet(set_num);
 
     res.redirect("/lego/sets");
   } catch (error) {
     res.status(500).render("500", {
-      message: `Sorry but we encountered the error: ${error}`,
+      message: `encountered error: ${error}`,
     });
+    console.log("showing lego/deleteSet......");
   }
 });
 
@@ -120,8 +129,8 @@ app.get("/lego/sets", async (req, res) => {
     }
 
     res.render("sets", { sets });
-  } catch (err) {
-    res.status(404).render("404", { message: err });
+  } catch (error) {
+    res.status(404).render("404", { message: error });
   }
 });
 
@@ -129,14 +138,14 @@ app.get("/lego/sets/:num", async (req, res) => {
   try {
     let set = await legoData.getSetByNum(req.params.num);
     res.render("set", { set });
-  } catch (err) {
-    res.status(404).render("404", { message: err });
+  } catch (error) {
+    res.status(404).render("404", { message: error });
   }
 });
 
 app.use((req, res, next) => {
   res.status(404).render("404", {
-    message: "I'm sorry, we're unable to find what you're looking for",
+    message: "sorry were unbale to find what youre looking for",
   });
 });
 
